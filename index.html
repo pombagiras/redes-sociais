@@ -184,6 +184,7 @@
             -webkit-backdrop-filter: blur(15px);
             margin-top: 20px;
             box-shadow: 0 8px 32px var(--shadow-color);
+            overflow: hidden; /* Evita que o conteúdo vaze */
         }
 
         .email {
@@ -194,10 +195,17 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            flex-wrap: wrap; /* Permite quebra de linha se necessário */
+            word-break: break-word; /* Quebra palavras longas */
         }
 
         .email i {
             color: #e91e63;
+            flex-shrink: 0; /* Impede que o ícone diminua */
+        }
+
+        .email span {
+            max-width: 100%; /* Garante que não ultrapasse o container */
         }
 
         .copyright {
@@ -206,7 +214,7 @@
             margin-top: 10px;
         }
 
-        /* Responsividade */
+        /* Responsividade - Tablets */
         @media (max-width: 768px) {
             .social-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -219,11 +227,23 @@
             .profile-description {
                 font-size: 1rem;
             }
+            
+            .footer {
+                padding: 20px 15px; /* Reduz padding nas laterais */
+            }
+            
+            .email {
+                font-size: 1.1rem; /* Reduz um pouco o tamanho da fonte */
+                gap: 8px;
+                padding: 0 10px; /* Adiciona padding interno */
+            }
         }
 
+        /* Responsividade - Celulares Pequenos */
         @media (max-width: 480px) {
             .social-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
             
             .container {
@@ -233,6 +253,97 @@
             .profile-img {
                 width: 120px;
                 height: 120px;
+            }
+            
+            .profile-name {
+                font-size: 1.6rem;
+            }
+            
+            .profile-description {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+            
+            .footer {
+                padding: 15px 10px; /* Menor padding em telas pequenas */
+                margin-top: 15px;
+            }
+            
+            .email {
+                font-size: 1rem; /* Tamanho menor para celular */
+                flex-direction: column; /* Ícone acima do texto */
+                gap: 5px;
+                padding: 0 5px;
+            }
+            
+            .email i {
+                font-size: 1.2rem;
+                margin-bottom: 5px;
+            }
+            
+            .email span {
+                font-size: 0.95rem; /* Tamanho específico para o email */
+                text-align: center;
+                width: 100%;
+                overflow-wrap: break-word;
+                hyphens: auto; /* Adiciona hífens se necessário */
+            }
+            
+            .copyright {
+                font-size: 0.8rem;
+                padding: 0 5px;
+            }
+            
+            .social-card {
+                padding: 15px;
+                min-height: 140px;
+            }
+            
+            .social-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            
+            .social-name {
+                font-size: 0.9rem;
+            }
+            
+            .social-btn {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Responsividade - Celulares Muito Pequenos */
+        @media (max-width: 360px) {
+            .social-grid {
+                grid-template-columns: 1fr; /* Uma coluna em telas muito pequenas */
+                gap: 12px;
+            }
+            
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .profile-name {
+                font-size: 1.4rem;
+            }
+            
+            .profile-description {
+                font-size: 0.9rem;
+            }
+            
+            .email {
+                font-size: 0.9rem;
+            }
+            
+            .email span {
+                font-size: 0.85rem;
+            }
+            
+            .footer {
+                padding: 12px 8px;
             }
         }
     </style>
