@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todas as Redes Sociais - Alexia Melusine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #9c27b0;
+            --secondary-color: #e91e63;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Chuva de ícones */
+        .icon-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .icon-rain i {
+            position: absolute;
+            top: -50px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cabeçalho */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--glass-border);
+            box-shadow: 0 8px 32px var(--shadow-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .profile-info {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .profile-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #e91e63, #9c27b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .profile-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            padding: 0 15px;
+        }
+
+        /* Cards de redes sociais */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-card {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow-color);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .social-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .social-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Rodapé */
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            margin-top: 20px;
+            box-shadow: 0 8px 32px var(--shadow-color);
+        }
+
+        .email {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .email i {
+            color: #e91e63;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .social-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            .profile-name {
+                font-size: 1.8rem;
+            }
+            
+            .profile-description {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Chuva de ícones -->
+    <div class="icon-rain" id="iconRain"></div>
+
+    <div class="container">
+        <!-- Cabeçalho com perfil -->
+        <header class="header">
+            <div class="profile">
+                <img src="https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png" alt="Alexia Melusine" class="profile-img">
+                <div class="profile-info">
+                    <h1 class="profile-name">Alexia Melusine</h1>
+                    <p class="profile-description">
+                        Trabalho espiritual focado em Pombagira, oferecendo orientação e apoio através das minhas redes sociais. 
+                        Compartilho conhecimentos sobre espiritualidade, simbologia e empoderamento feminino na religiosidade afro-brasileira.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Grid de redes sociais -->
+        <main class="social-grid" id="socialGrid">
+            <!-- As redes sociais serão inseridas aqui via JavaScript -->
+        </main>
+
+        <!-- Rodapé -->
+        <footer class="footer">
+            <div class="email">
+                <i class="fas fa-envelope"></i>
+                <span>almasdepombagiras@gmail.com</span>
+            </div>
+            <p class="copyright">© 2023 Alexia Melusine. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Dados das redes sociais
+        const socialNetworks = [
+            { name: "TikTok", icon: "fab fa-tiktok", url: "https://www.tiktok.com/@alexia.melusine", color: "#000000" },
+            { name: "TikTok Espelhos", icon: "fab fa-tiktok", url: "https://www.tiktok.com/@espelhosdepombagira?lang=pt-BR", color: "#000000" },
+            { name: "TikTok Almas", icon: "fab fa-tiktok", url: "https://www.tiktok.com/@almasdepombagira?lang=pt-BR", color: "#000000" },
+            { name: "TikTok Alexia", icon: "fab fa-tiktok", url: "https://www.tiktok.com/@alexiarosadefogo?lang=pt-BR", color: "#000000" },
+            { name: "YouTube", icon: "fab fa-youtube", url: "https://www.youtube.com/@almasdepombagira", color: "#FF0000" },
+            { name: "Instagram Almas", icon: "fab fa-instagram", url: "https://www.instagram.com/almasdepombagira/", color: "#E4405F" },
+            { name: "Instagram Alexia", icon: "fab fa-instagram", url: "https://www.instagram.com/alexiamelusine/", color: "#E4405F" },
+            { name: "Threads", icon: "fas fa-comment", url: "https://www.threads.com/@almasdepombagira", color: "#000000" },
+            { name: "Facebook", icon: "fab fa-facebook", url: "https://www.facebook.com/alexia.tsan.7", color: "#1877F2" },
+            { name: "Bluesky", icon: "fas fa-cloud", url: "https://bsky.app/profile/almasdepombagira.bsky.social", color: "#0085FF" },
+            { name: "Meta AI", icon: "fas fa-robot", url: "https://www.meta.ai/@alexiamelusine", color: "#0468FF" },
+            { name: "Sora ChatGPT", icon: "fas fa-comment-dots", url: "https://sora.chatgpt.com/profile/alexialuzdeferro", color: "#10A37F" },
+            { name: "Telegram", icon: "fab fa-telegram", url: "https://t.me/pomba_giras", color: "#26A5E4" },
+            { name: "WhatsApp", icon: "fab fa-whatsapp", url: "https://whatsapp.com/channel/0029VbBs2AnJkK7J9J0nLr2G", color: "#25D366" },
+            { name: "Discord", icon: "fab fa-discord", url: "https://discord.gg/gWZP8R7Dqu", color: "#5865F2" },
+            { name: "Pinterest", icon: "fab fa-pinterest", url: "https://br.pinterest.com/almasdepombagira/", color: "#E60023" },
+            { name: "Kwai Almas", icon: "fas fa-video", url: "https://www.kwai.com/@AlmasdePombagira", color: "#FF6600" },
+            { name: "Kwai Alexia", icon: "fas fa-video", url: "https://www.kwai.com/@AlexiaRosadeFogo", color: "#FF6600" },
+            { name: "Kwai Espelhos", icon: "fas fa-video", url: "https://www.kwai.com/@espelhosdepombagira", color: "#FF6600" },
+            { name: "Reddit", icon: "fab fa-reddit", url: "https://www.reddit.com/user/Alexia-Luz-de-Ferro/", color: "#FF4500" },
+            { name: "Twitter/X", icon: "fab fa-twitter", url: "https://x.com/PambuNjila", color: "#000000" }
+        ];
+
+        // Ícones para a chuva
+        const rainIcons = [
+            "fas fa-flag", "fas fa-fire", "fas fa-female", "fas fa-eye", "fas fa-snail",
+            "fas fa-wine-glass-alt", "fas fa-keyboard", "fas fa-mobile-alt", "fas fa-gem",
+            "fas fa-transgender-alt", "fas fa-heart", "fas fa-star", "fas fa-moon", "fas fa-sun"
+        ];
+
+        // Gerar a chuva de ícones
+        function createIconRain() {
+            const iconRain = document.getElementById('iconRain');
+            const iconCount = 50;
+            
+            for (let i = 0; i < iconCount; i++) {
+                const icon = document.createElement('i');
+                icon.className = rainIcons[Math.floor(Math.random() * rainIcons.length)];
+                
+                // Posição aleatória
+                icon.style.left = `${Math.random() * 100}%`;
+                icon.style.fontSize = `${Math.random() * 15 + 10}px`;
+                
+                // Animação com velocidade aleatória
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+                icon.style.animationDuration = `${duration}s`;
+                icon.style.animationDelay = `${delay}s`;
+                
+                iconRain.appendChild(icon);
+            }
+        }
+
+        // Gerar os cards das redes sociais
+        function createSocialCards() {
+            const socialGrid = document.getElementById('socialGrid');
+            
+            socialNetworks.forEach(network => {
+                const card = document.createElement('div');
+                card.className = 'social-card';
+                
+                // Definir cor do ícone
+                const iconStyle = `color: ${network.color}`;
+                
+                card.innerHTML = `
+                    <div class="social-icon" style="${iconStyle}">
+                        <i class="${network.icon}"></i>
+                    </div>
+                    <div class="social-name">${network.name}</div>
+                    <a href="${network.url}" target="_blank" class="social-btn">Acessar</a>
+                `;
+                
+                socialGrid.appendChild(card);
+            });
+        }
+
+        // Inicializar o aplicativo
+        document.addEventListener('DOMContentLoaded', function() {
+            createIconRain();
+            createSocialCards();
+            
+            // Adicionar efeito de vidro fosco dinâmico
+            const cards = document.querySelectorAll('.social-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.backdropFilter = 'blur(20px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.backdropFilter = 'blur(15px)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
